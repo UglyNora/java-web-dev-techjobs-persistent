@@ -23,7 +23,7 @@ public class EmployerController {
         model.addAttribute("title", "My Jobs");
         model.addAttribute("employers", employerRepository.findAll());
 
-        return "skills/index";
+        return "employers/index";
     }
 
     @GetMapping("add")

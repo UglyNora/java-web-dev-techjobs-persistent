@@ -20,6 +20,8 @@ public class SkillController {
     @Autowired
     private SkillRepository skillRepository;
 
+
+
     @RequestMapping("")
     public String index (Model model){
         model.addAttribute("title", "My Jobs");
@@ -32,7 +34,7 @@ public class SkillController {
     @GetMapping("add")
     public String displayAddSkillForm(Model model) {
         model.addAttribute(new Skill());
-        return "skill/add";
+        return "skills/add";
     }
 
     @PostMapping("add")
@@ -46,14 +48,14 @@ public class SkillController {
         return "redirect:";
     }
 
-    @GetMapping("view/{SkillId}")
-    public String displayViewSkill(Model model, @PathVariable int SkillId) {
+    @GetMapping("view/{skillId}")
+    public String displayViewSkill(Model model, @PathVariable int skillId) {
 
-        Optional optSkill =skillRepository.findById(SkillId);
+        Optional optSkill =skillRepository.findById(skillId);
         if (optSkill.isPresent()) {
            Skill skill = (Skill) optSkill.get();
             model.addAttribute("skill",skill );
-            return "skill/view";
+            return "skills/view";
         } else {
             return "redirect:../";
         }
